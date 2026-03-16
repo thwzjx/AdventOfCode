@@ -4,8 +4,8 @@ public class Day2
 {
     public static void ProblemA()
     {
-        const string test = "~/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay2/Input-test.txt";
-        const string input = "~/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay2/Input.txt";
+        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay2/Input-test.txt";
+        const string input = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay2/Input.txt";
         var file = File.ReadLines(input);
         var ans = 0;
         foreach (var line in file)

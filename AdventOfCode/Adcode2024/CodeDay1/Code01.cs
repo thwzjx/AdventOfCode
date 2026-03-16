@@ -16,7 +16,7 @@ public class Code01
     {
         string basicPath = AppContext.BaseDirectory;
         // Console.WriteLine($"current working dir is {basicPath}");
-        var file = System.IO.File.ReadLines("~/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/InputA.txt");
+        var file = System.IO.File.ReadLines("/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/InputA.txt");
         var ans = 0;
         // System.Collections
         var left = new PriorityQueue<int,int>();
@@ -40,8 +40,8 @@ public class Code01
 
     public static void ProblemB()
     {
-        var filePath = "~/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/InputA.txt";
-        var testPath = "~/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/Input-test.txt";
+        var filePath = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/InputA.txt";
+        var testPath = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/Input-test.txt";
         var file = File.ReadAllLines(filePath);
         var left = new Dictionary<int,int>();
         var right = new Dictionary<int,int>();
