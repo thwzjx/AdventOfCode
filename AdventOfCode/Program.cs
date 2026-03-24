@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode;
+﻿using System;
+
+namespace AdventOfCode;
 
 class Program
 {
