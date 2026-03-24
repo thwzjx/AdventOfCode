@@ -1,11 +1,17 @@
+using System;
+using System.IO;
+using System.Linq;
+using AdventOfCode.Util;
+
 namespace AdventOfCode.Adcode2024.CodeDay2;
 
 public class Day2
 {
     public static void ProblemA()
     {
-        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay2/Input-test.txt";
-        const string input = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay2/Input.txt";
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var input = Path.Combine(cur,"Input.txt");
         var file = File.ReadLines(input);
         var ans = 0;
         foreach (var line in file)

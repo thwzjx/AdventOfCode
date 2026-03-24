@@ -1,4 +1,6 @@
+using System.IO;
 using System.Text.RegularExpressions;
+using AdventOfCode.Util;
 
 namespace AdventOfCode.Adcode2024.CodeDay3;
 using System;
@@ -7,8 +9,9 @@ public class Day3
 {
     public static void ProgramA()
     {
-        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay3/Input-test.txt";
-        const string input = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay3/Input.txt";
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var input = Path.Combine(cur,"Input.txt");
         var file = File.ReadAllLines(input);
         var ans = 0;
         foreach (var line in file)
@@ -29,8 +32,9 @@ public class Day3
 
     public static void ProgramB()
     {
-        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay3/Input-testB.txt";
-        const string input = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay3/Input.txt";
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var input = Path.Combine(cur,"Input.txt");
         var file = File.ReadAllLines(input);
         var ans = 0;
         bool enabled = true;

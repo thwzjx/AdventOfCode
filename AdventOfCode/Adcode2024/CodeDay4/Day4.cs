@@ -1,11 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using AdventOfCode.Util;
+
 namespace AdventOfCode.Adcode2024.CodeDay4;
 
 public class Day4
 {
     public static void ProgramA()
     {
-        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay4/Input-test.txt";
-        const string input = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay4/Input.txt";
+        string curDir = CustomUtil.GetSourceDir();
+        var test = Path.Combine(curDir,"Input-test.txt");
+        var input = Path.Combine(curDir,"Input.txt");
         var file = File.ReadAllLines(input);
         var temp = new List<List<char>>();
         foreach (var line in file)
@@ -95,8 +102,9 @@ public class Day4
 
     public static void ProgramB()
     {
-        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay4/Input-test.txt";
-        const string input = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay4/Input.txt";
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var input = Path.Combine(cur,"Input.txt");
         var file = File.ReadAllLines(input);
         var temp = new List<List<char>>();
         foreach (var line in file)

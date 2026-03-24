@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using AdventOfCode.Util;
 namespace AdventOfCode.Adcode2024.CodeDay7;
 
 public class Day7
@@ -15,7 +15,8 @@ public class Day7
         var nums = info[1].Trim().Split(" ",StringSplitOptions.RemoveEmptyEntries).Select(long.Parse).ToArray();
         return (target, nums);
     }
-    static bool CanBeOp(long target, long[] numbers, int idx)
+
+    private static bool CanBeOp(long target, long[] numbers, int idx, bool canUseOtherOp)
     {
         if (idx == 1)
         {
@@ -31,39 +32,60 @@ public class Day7
         var res = false;
         if (target >= numbers[idx])
         {
-            res = res || CanBeOp(target - numbers[idx], numbers, idx - 1);
+            res = res || CanBeOp(target - numbers[idx], numbers, idx - 1,canUseOtherOp);
         }
         // var res = 
 
         if (target % numbers[idx] == 0)
         {
-            res = res || CanBeOp(target / numbers[idx], numbers, idx - 1);
+            res = res || CanBeOp(target / numbers[idx], numbers, idx - 1,canUseOtherOp);
         }
-        string cur = numbers[idx].ToString();
-        var targetStr = target.ToString();
-        bool isEndOfCurNum = targetStr.EndsWith(cur) && targetStr.Length > cur.Length;
-        
-        if (isEndOfCurNum)
+
+        if (canUseOtherOp)
         {
-            string prefix = targetStr.Substring(0, targetStr.Length - cur.Length);
-            res = res || CanBeOp(long.Parse(prefix), numbers, idx - 1);
-            // res = res || CanBeOp(long.Parse(target.ToString().TrimEnd(cur)), numbers, idx - 1);
+            string cur = numbers[idx].ToString();
+            var targetStr = target.ToString();
+            bool isEndOfCurNum = targetStr.EndsWith(cur) && targetStr.Length > cur.Length;
+        
+            if (isEndOfCurNum)
+            {
+                string prefix = targetStr.Substring(0, targetStr.Length - cur.Length);
+                res = res || CanBeOp(long.Parse(prefix), numbers, idx - 1,canUseOtherOp);
+            }
         }
-        // return CanBeOp(target - numbers[idx], numbers, idx - 1) ;
+        
         return res;
     }
 
     public static void ProgramA()
     {
-        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay7/Input-test.txt";
-        const string inputFile =
-            "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay7/Input.txt";
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var inputFile = Path.Combine(cur,"Input.txt");
         var input = File.ReadLines(inputFile);
         long res = 0;
         foreach (var line in input)
         {
             var (target, nums) = ParseInput(line);
-            if (CanBeOp(target, nums, nums.Length - 1))
+            if (CanBeOp(target, nums, nums.Length - 1,false))
+            {
+                res += target;
+            }
+        }
+        Console.WriteLine(res);
+    }
+    public static void ProgramB()
+    {
+        string cur = CustomUtil.GetSourceDir();
+        // Console.WriteLine(cur);
+        var test = Path.Combine(cur,"Input-test.txt");
+        var inputFile = Path.Combine(cur,"Input.txt");
+        var input = File.ReadLines(inputFile);
+        long res = 0;
+        foreach (var line in input)
+        {
+            var (target, nums) = ParseInput(line);
+            if (CanBeOp(target, nums, nums.Length - 1,true))
             {
                 res += target;
             }

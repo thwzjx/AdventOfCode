@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using AdventOfCode.Util;
+
 namespace AdventOfCode.Adcode2024.CodeDay5;
 
 public class Day5
@@ -5,8 +11,9 @@ public class Day5
     
     public static void ProgramA()
     {
-        var test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay5/Input-test";
-        var input = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay5/Input";
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var input = Path.Combine(cur,"Input.txt");
         var file = File.ReadAllLines(input);
 
         var isBuild = true;

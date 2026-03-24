@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using AdventOfCode.Util;
 
 namespace AdventOfCode.Adcode2024.CodeDay6;
 
@@ -10,9 +11,10 @@ public class Day6
     public static void ProgramA()
     {
         var dirs = new List<(int,int)>{(-1,0),(0,1),(1,0),(0,-1)};
-        const string test = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay6/Input-test.txt";
-        const string input_file = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay6/Input.txt";
-        var input = File.ReadLines(input_file).ToArray();
+        string curDir = CustomUtil.GetSourceDir();
+        var test = Path.Combine(curDir,"Input-test.txt");
+        var inputFile = Path.Combine(curDir,"Input.txt");
+        var input = File.ReadLines(inputFile).ToArray();
         var m = input.Length;
         var n = input[0].Length;
         var path = new HashSet<(int, int)>();
@@ -69,9 +71,10 @@ public class Day6
         {
             (-1, 0), (0, 1), (1, 0), (0, -1)
         };
-
-        const string input_file = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay6/Input.txt";
-        var input = File.ReadLines(input_file).ToArray();
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var inputFile = Path.Combine(cur,"Input.txt");
+        var input = File.ReadLines(inputFile).ToArray();
 
         int m = input.Length;
         int n = input[0].Length;

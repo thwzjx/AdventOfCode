@@ -1,4 +1,8 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using AdventOfCode.Util;
 
 namespace AdventOfCode.Adcode2024.CodeDay1;
 
@@ -14,9 +18,10 @@ public class Code01
     }
     public static void ProblemA()
     {
-        string basicPath = AppContext.BaseDirectory;
-        // Console.WriteLine($"current working dir is {basicPath}");
-        var file = System.IO.File.ReadLines("/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/InputA.txt");
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var input = Path.Combine(cur,"Input.txt");
+        var file = System.IO.File.ReadLines(input);
         var ans = 0;
         // System.Collections
         var left = new PriorityQueue<int,int>();
@@ -40,9 +45,10 @@ public class Code01
 
     public static void ProblemB()
     {
-        var filePath = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/InputA.txt";
-        var testPath = "/Users/haowen/RiderProjects/AdventOfCode/AdventOfCode/Adcode2024/CodeDay1/Input-test.txt";
-        var file = File.ReadAllLines(filePath);
+        string cur = CustomUtil.GetSourceDir();
+        var test = Path.Combine(cur,"Input-test.txt");
+        var input = Path.Combine(cur,"Input.txt");
+        var file = File.ReadAllLines(input);
         var left = new Dictionary<int,int>();
         var right = new Dictionary<int,int>();
         var ans = 0;
